@@ -12,7 +12,7 @@ This file records CNC cutters currently on hand for future CAM, feeds/speeds, an
 | 2 | SpeTool | Spiral upcut end mill, SPE-X | 1/4 in | 1/4 in | 1 in | 2 | SPE-X / TAC | W04020 | User has this bit on hand. SpeTool catalog data identifies W04020 as a 1/4 in cutting diameter, 1/4 in shank, 1 in cutting length, 2-1/2 in overall length upcut. |
 | 3 | Amana Tool | Solid-carbide Spektra spiral plunge down-cut | 1/4 in | 1/4 in | 3/4 in | — | Spektra | 46202-K | User-described as “Manna Tools quarter inch spiral downcut, 46202-K.” Manufacturer identifies it as Amana Tool 46202-K. |
 | 4 | SpeTool | Spiral O-flute upcut end mill, SPE-X | 1/4 in | 1/4 in | 1 in | 1 | SPE-X | Likely W03001 SPE-X | Exact part number was not supplied by user; manufacturer match based on stated 1/4 in O-flute SPE-X configuration. |
-| 5 | SpeTool | Spiral O-flute upcut end mill, SPE-X | 1/8 in | 1/4 in | 3/4 in | 1 | SPE-X | Likely W03002 SPE-X | User described “SP 1/8 inch, diameter 1 quarter inch”; interpreted as 1/8 in cutting diameter with 1/4 in shank. Exact part number was not supplied by user. |
+| 5 | SpeTool | Spiral O-flute upcut end mill, SPE-X | 1/8 in | 1/4 in | 3/4 in | 1 | SPE-X | Likely W03002 SPE-X | User described “SP 1/8 inch, diameter 1 quarter inch”; interpreted as 1/8 in cutting diameter with 1/4 in shank. Exact part number was not supplied by user. |\n| 6 | BINSTAK | Spoilboard surfacing / slab-flattening router bit | 1 in | 1/4 in | — | 3-wing carbide-tipped | — | Amazon order shipped Feb. 2025 | Suitable for AltMill spoilboard surfacing; exact manufacturer SKU not recorded. |
 
 ## Current AltMill spoilboard fastener decision
 
@@ -31,3 +31,10 @@ For the current AltMill 4×8 spoilboard setup:
 - O-flute tools should be considered first for plastics/acrylic where appropriate.
 - Downcut Tool #3 is useful when top-surface finish is the priority in wood/MDF/plywood; chip evacuation and full-depth slotting limits still need to be considered.
 - The 45° V-groove tool is primarily for engraving, V-grooves, chamfers, and related detail work rather than ordinary pocket clearing.
+
+
+## Current ATC assignments
+
+- T1: 1/4 in SpeTool SPE-X upcut
+- T2: 1/8 in SpeTool SPE-X O-flute
+- T3–T6: not yet permanently assigned
