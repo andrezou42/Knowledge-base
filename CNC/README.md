@@ -23,6 +23,7 @@ Current stage: machine is assembled and being commissioned. The immediate work i
 ### Machine reference
 - [AltMill 4×8 — machine profile and key specifications](./Machines/AltMill-4x8/README.md)
 - [Commissioning and spoilboard surfacing](./Machines/AltMill-4x8/Commissioning-and-Spoilboard.md)
+- [First job and daily operating runbook](./Machines/AltMill-4x8/First-Job-and-Daily-Runbook.md)
 - [ATC spindle, tool rack, TLS and pneumatics](./Machines/AltMill-4x8/ATC-Spindle-and-Pneumatics.md)
 - [Software, firmware, CAM and post-processors](./Machines/AltMill-4x8/Software-Firmware-and-CAM.md)
 - [Maintenance, squaring, tramming and pre-flight checks](./Machines/AltMill-4x8/Maintenance-Calibration-and-Preflight.md)
@@ -41,6 +42,7 @@ The machine pages are organized by **what you are trying to do**, not by the ord
 
 - Need a number such as travel, speed, spindle RPM or repeatability? → Machine profile.
 - About to surface the spoilboard or run a first test? → Commissioning.
+- Ready to run a normal job and want the short sequence? → First job / daily runbook.
 - ATC failed, air is leaking, rack pickup looks wrong, or TLS is involved? → ATC page, then troubleshooting.
 - Need to export from Aspire/VCarve/Fusion or check gSender/firmware? → Software/CAM.
 - Machine is leaving ridges, going out of square, sounding rough, or is due for lubrication? → Maintenance/calibration.
