@@ -126,9 +126,10 @@ Do not leave the machine in a "limits disabled" state after surfacing.
 The owned cutter is a 1 in diameter, 1/4 in shank surfacing/slab-flattening bit.
 
 Practical first-pass approach:
+- physically identify the exact BINSTAK cutter/SKU if possible and verify its maximum permitted RPM; **the cutter manufacturer's RPM limit overrides Sienci's generic 20,000 RPM surfacing example**;
 - verify cutter is undamaged and securely tightened;
 - use the shallowest pass that will reveal high/low areas;
-- use Sienci's 20,000 RPM / ~8,000 mm/min guidance as an upper starting reference, not a requirement;
+- only if the cutter is rated appropriately, use Sienci's 20,000 RPM / ~8,000 mm/min guidance as an upper starting reference, not a requirement;
 - if uncertain about bit balance or cut quality, start slower and observe;
 - do not take a deep corrective pass immediately;
 - inspect for tram ridges after the first complete pass.
