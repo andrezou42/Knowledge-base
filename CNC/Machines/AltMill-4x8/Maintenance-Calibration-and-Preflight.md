@@ -4,14 +4,15 @@ _Last reviewed: 2026-10-01_
 
 ## Routine maintenance
 
-Current 4×8-specific Sienci guidance recommends periodic lubrication based on use/distance rather than calendar time.
+Sienci updated the dedicated 4×8 maintenance page on **2026-09-28**. The current shop intervals are:
 
-The current page gives a practical interval of roughly **165 hours of use** for:
-- rack lubrication,
-- linear-guide lubrication,
-- ballscrew lubrication.
+- **Rack and pinion: every 160 hours**
+- **Linear guides: every 160 hours**
+- **Ballscrews: every 165 hours**
 
-A prior version of the page also described maintenance around each 100 km of linear travel. Treat 165 hours as the current simple shop interval and shorten it under heavy dust, production use or obvious lubricant loss.
+For an 8-hour/day, 5-day/week production schedule, Sienci equates 160 hours to about four weeks. Treat these as baseline intervals and inspect sooner under heavy MDF dust, production use, rust risk, unusual sound, or visible lubricant loss.
+
+Older versions of the 4×8 page described maintenance by approximately 100 km of axis travel. Use the newer hour-based schedule above for our log unless Sienci changes the page again.
 
 Official page:
 https://resources.sienci.com/view/am4x8-maintenance/
