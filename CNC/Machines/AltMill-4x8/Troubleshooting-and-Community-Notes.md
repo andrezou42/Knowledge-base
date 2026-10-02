@@ -17,7 +17,7 @@ https://sienci.zendesk.com/hc/en-us/articles/47762168514580-AltMill-4x8-Troubles
 | Wrong direction/speed/distance | AltMill 4×8 profile, motor DIP switches, couplers, firmware settings |
 | Alarm 10 / 15 while homing | Sensor position, Y1/Y2 sensor/motor connections, mechanical resistance |
 | Motor alarm + Alarm 10 | Binding/mechanical resistance or interrupted closed-loop feedback |
-| Alarm 14 / spindle not responding | VFD/spindle/controller communications |
+| Alarm 14 / Alarm 19; spindle not responding | VFD/spindle/controller RS485 communications, VFD/controller configuration |
 | Alarm 2 travel exceeded | Job/origin outside machine bounds; not homed; soft-limit conflict |
 | Error 33 | Re-export with GRBL millimeter post |
 | ATC "keep-out" error | Machine is in protected rack area; move away appropriately |
@@ -78,6 +78,23 @@ If a motor alarm accompanies Alarm 10, Sienci notes this can mean:
 - loss/interruption of closed-loop feedback.
 
 Power-cycle, move away from bump stops/sensors, and re-test only after removing the likely cause.
+
+# Alarm 14 / Alarm 19 — spindle communication
+
+Sienci's updated August 2026 troubleshooting guide clarifies the alarm numbering:
+- older firmware can report **Alarm 14**;
+- updated firmware, **AltMill 4×8**, SLB Lite, or SLB-EXT V2 normally reports **Alarm 19**.
+
+Typical associated symptom: the VFD shows `r00.0` or the spindle will not respond normally.
+
+First checks:
+- confirm the VFD and controller are powered correctly;
+- inspect the RS485 cable and connections;
+- confirm both communication LEDs are flashing as described by Sienci;
+- verify the correct SLB EEPROM settings and VFD PD parameters before replacing hardware.
+
+Official guide:
+https://sienci.zendesk.com/hc/en-us/articles/34779231810964-Alarm-14-Alarm-19
 
 # Travel / soft-limit errors
 
@@ -156,6 +173,28 @@ For our shop this is not worth experimenting with because the Gweike compressor 
 
 Forum example:
 https://forum.sienci.com/t/atc-air-requirements/25031
+
+## ATC dust-shoe interference
+
+A July/August 2026 owner thread documented the lower magnetic portion of the ATC dust shoe releasing during tool changes. Sienci staff identified slight **dust-shoe contact with the tool rack** on some machines and supplied an adjustment. The same owner also found that an overly compressed dust hose was pushing on the boot.
+
+Practical checks before unattended repeatability testing:
+- watch a complete pickup/return cycle from the rack side;
+- confirm the dust shoe does not touch the rack;
+- make sure the extraction hose is supported so it does not force the boot downward or sideways;
+- if contact exists, use Sienci's current rack/dust-shoe adjustment guidance rather than modifying the rack blindly.
+
+Community/support thread:
+https://forum.sienci.com/t/atc-tool-change-causes-bottom-half-of-dust-shoe-to-drop/26805
+
+## Compressor cut-in pressure
+
+An ATC owner reported low-pressure faults because a nominal 120 PSI compressor did not restart until pressure had fallen to roughly 86 PSI. The useful lesson is not the owner's exact setting, but that **compressor cut-in pressure must keep the ATC supply above its required operating pressure during a tool change**.
+
+Our large Gweike compressor should have ample capacity, but the regulated AltMill branch should still be observed through several real tool changes before assuming the pneumatic system is validated.
+
+Community thread:
+https://forum.sienci.com/t/atc-setup-tips-and-tricks/26629
 
 ## Software community signal
 
