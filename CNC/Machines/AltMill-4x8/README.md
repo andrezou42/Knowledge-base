@@ -27,7 +27,7 @@ See [Equipment-Inventory.md](../../Equipment-Inventory.md) for purchase history 
 | Overall machine size | 1676 × 2896 × 975 mm (66 × 114 × 38.4 in) |
 | Nominal cutting area | 1265 × 2460 × 210 mm (49.8 × 104 × 8.3 in) |
 | Max Y cutting speed | approx. 25,000 mm/min (1,000 IPM) |
-| Max X cutting speed | approx. 16,000 mm/min (about 590 IPM) |
+| Max X cutting speed | approx. 16,000 mm/min (~630 IPM by direct conversion; Sienci's page parenthetically says 590 IPM) |
 | Max Z cutting speed | approx. 6,000 mm/min (236 IPM) |
 | Repeatability | ±0.05 mm (±0.002 in) |
 | Y motion | Rack and pinion with precision gearbox reduction |
@@ -87,7 +87,12 @@ Official source: https://resources.sienci.com/view/atc-specifications/
 
 ## Electrical and air
 
-For the ATC system Sienci specifies separate circuits for the CNC/controller, 2.2 kW spindle, and compressor.
+Sienci's 4×8 specification page lists:
+- AltMill / SLB-EXT supply: 100–130 VAC; machine/controller requirement is modest compared with the spindle
+- Sienci 2.2 kW spindle kit: 220–240 VAC single phase
+- the ATC specification separately calls for dedicated circuits for controller/system, spindle, and compressor
+
+The current Sienci pages are not perfectly consistent about the exact branch-circuit amperage for the 2.2 kW spindle, so use the actual supplied VFD/plug nameplate and local electrical code rather than treating a web-page amp number as wiring authority.
 
 ATC air requirement:
 - **100 PSI operating pressure**
@@ -96,7 +101,21 @@ ATC air requirement:
 
 Our shop uses the large Gweike compressor as the upstream air source and regulates the AltMill branch at the Sienci filter/regulator.
 
-Official source: https://resources.sienci.com/view/atc-specifications/
+Official sources:
+- https://resources.sienci.com/view/am4x8-specifications/
+- https://resources.sienci.com/view/atc-specifications/
+
+## Environment
+
+Sienci's published operating guidance:
+- expected reliable shop-temperature range: roughly **5–30°C**
+- allow the machine/electronics to acclimate after large temperature changes to avoid condensation
+- excessive humidity can promote corrosion, electronics problems and MDF swelling
+- very dry air can increase static-discharge problems, making good grounding/dust-control practice more important
+
+This is especially relevant in a shop containing MDF dust, large dust-collection hoses, and winter temperature swings.
+
+Official source: https://resources.sienci.com/view/am4x8-specifications/
 
 ## Mechanical detail that matters most on this 4×8
 
