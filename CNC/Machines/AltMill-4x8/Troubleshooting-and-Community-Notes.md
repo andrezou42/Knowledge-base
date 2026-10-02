@@ -15,8 +15,8 @@ https://sienci.zendesk.com/hc/en-us/articles/47762168514580-AltMill-4x8-Troubles
 | Rack/pinion noise | Drive tension screw, pivot screw, pinion lubrication |
 | Axis will not move | Motor power LED, motor alarm, wiring, machine profile / motor settings |
 | Wrong direction/speed/distance | AltMill 4×8 profile, motor DIP switches, couplers, firmware settings |
-| Alarm 10 / 15 while homing | Sensor position, Y1/Y2 sensor/motor connections, mechanical resistance |
-| Motor alarm + Alarm 10 | Binding/mechanical resistance or interrupted closed-loop feedback |
+| Alarm 15 while dual-Y homing | Y sides not aligned, sensors, motor settings, Limit Jog Commands ($40) |
+| Alarm 10 / Alarm 17 + Motor Error | Closed-loop motor fault: binding, wiring/feedback, limit setup; current post-May-2026 firmware uses Alarm 17 |
 | Alarm 14 / Alarm 19; spindle not responding | VFD/spindle/controller RS485 communications, VFD/controller configuration |
 | Alarm 2 travel exceeded | Job/origin outside machine bounds; not homed; soft-limit conflict |
 | Error 33 | Re-export with GRBL millimeter post |
@@ -63,21 +63,42 @@ Because our Y axis can move much faster than typical hobby-CNC screw drives, unu
 
 # Homing and closed-loop alarms
 
-The 4×8 uses dual Y motors/sensors.
+The 4×8 uses dual Y motors/sensors so homing can automatically square the gantry.
 
-For Alarm 10/15 during homing:
-- identify which axis triggers it;
-- verify Y1 motor cable is paired with Y1 sensor/controller ports;
-- verify Y2 is paired with Y2;
-- check inductive sensor adjustment;
-- make sure bump stops/flags are correctly installed;
-- check for physical resistance.
+## Alarm 15 — dual-Y homing mismatch
 
-If a motor alarm accompanies Alarm 10, Sienci notes this can mean:
-- excess mechanical resistance, or
-- loss/interruption of closed-loop feedback.
+Sienci describes Alarm 15 as protection against the two Y sides skewing the gantry. It means the second side was not found within the expected search distance.
 
-Power-cycle, move away from bump stops/sensors, and re-test only after removing the likely cause.
+Check:
+- both Y sides are mechanically aligned and able to move the same distance;
+- both Y inductive sensors reach their intended bump stops;
+- Y motor DIP switches are correct;
+- Limit Jog Commands ($40) is not creating a false condition during troubleshooting;
+- wiring/sensors are correctly paired and connected.
+
+Do not repeatedly home through an obvious Y-side mismatch.
+
+Official guide:
+https://sienci.zendesk.com/hc/en-us/articles/52202595650068-Alarm-15
+
+## Alarm 10 / Alarm 17 — closed-loop motor fault
+
+Sienci updated the alarm numbering in September 2026:
+- firmware **before May 2026** can show **Alarm 10**;
+- firmware **after May 2026** normally shows **Alarm 17** for this motor-fault condition.
+
+Clues include:
+- `Motor Error` in the gSender console,
+- the corresponding STL indicator on the controller,
+- a flashing red LED on the motor,
+- an axis that locks or binds.
+
+Investigate mechanical resistance, motor/feedback wiring, sensor setup and the affected axis before assuming the controller is bad.
+
+Important current Sienci warning: on Z, **do not use the integrated bump stop as the Z sensor stop**; the current Alarm 10/17 guide says this can trigger Alarm 17. Follow the current X/Z sensor-adjustment instructions.
+
+Official guide:
+https://sienci.zendesk.com/hc/en-us/articles/36090373125396-Alarm-10-Alarm-17-Motor-Fault
 
 # Alarm 14 / Alarm 19 — spindle communication
 
