@@ -28,6 +28,7 @@ Current stage: machine is assembled and being commissioned. The immediate work i
 - [Software, firmware, CAM and post-processors](./Machines/AltMill-4x8/Software-Firmware-and-CAM.md)
 - [Maintenance, squaring, tramming and pre-flight checks](./Machines/AltMill-4x8/Maintenance-Calibration-and-Preflight.md)
 - [Troubleshooting and community notes](./Machines/AltMill-4x8/Troubleshooting-and-Community-Notes.md)
+- [Research sources and update log](./Machines/AltMill-4x8/Sources-and-Update-Log.md)
 
 ### What we physically own
 - [Equipment inventory](./Equipment-Inventory.md)
