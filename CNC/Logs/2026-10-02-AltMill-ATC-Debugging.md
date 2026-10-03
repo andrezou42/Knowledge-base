@@ -163,10 +163,17 @@ At the end of the session:
 - Work-zero changes can alter ordinary displayed/commanded positions and confuse manual diagnostics.
 - Current ATC calibration can successfully pick up/probe tools.
 
-### Not yet proven
-- A persistent mechanical homing-repeatability fault has **not** been demonstrated.
-- A persistent rack-calibration error has **not** been demonstrated.
-- The earlier 15 mm apparent X miss is still unexplained because the stored and reported machine X coordinate appeared correct.
+### Resolved root cause
+- The intermittent X-position loss was traced to the **X motor coupler not being clamped tightly enough on the motor shaft**.
+- During the failed spoilboard job, gSender/controller machine X still reported the expected rack coordinate (about **694.43 mm**) while the spindle was physically displaced by roughly **10–11 mm**.
+- The rightmost pocket column progressively drifted in X and the two pocket passes no longer coincided, showing physical X registration was being lost during motion/cutting.
+- The final pocket error closely matched the subsequent ATC T1 return miss.
+- No closed-loop motor fault was recorded, consistent with the motor shaft tracking correctly while the mechanical connection after the motor slipped.
+- Strong physical confirmation: the X motor shaft could be pulled out of the coupler **without first loosening the coupler clamp**.
+- The motor was removed, the loose signal-terminal wire was reinserted into the spring-terminal connector, the motor was reassembled, the shaft was fully seated, and the coupler was tightened securely.
+- After repair, the machine was homed and the ATC initialization/calibration was rerun.
+- Verification run succeeded: ATC pickup/return aligned correctly, the pocket and through-hole operations lined up, and all checked pocket positions were correct.
+- Current conclusion: the coupler was likely partially tight—adequate for some light moves, but able to slip under higher cutting/traverse load.
 
 ## 10. Open questions / next tests
 
@@ -189,15 +196,28 @@ At the end of the session:
    - Recheck whether the stored G59.1 Y position is actually centered on Tool 1.
    - The observed ~5 mm rearward visual offset may or may not be meaningful.
 
-4. **Determine cause of the earlier intermittent ATC misses**
-   - Possibilities still include transient controller/gSender state during commissioning, an earlier 1.6.1 ATC setup issue, or coordinate-system confusion during diagnostics.
-   - Current evidence is insufficient to identify a single cause with confidence.
+4. **Periodic X-coupler verification**
+   - Add witness marks across the motor-shaft/coupler and ballscrew-side coupler interfaces.
+   - Periodically confirm both coupler clamps remain tight, especially after maintenance or if any X/ATC alignment anomaly reappears.
 
 ## 11. Operating rule going forward
 
-Until the cause of the earlier intermittent miss is understood:
+Going forward:
 - home before ATC operation,
-- use machine coordinates for ATC diagnostics,
-- avoid changing work zero during repeatability tests,
 - keep ATC keep-out enabled during normal operation,
-- abort immediately if a rack approach is visibly misaligned.
+- if an ATC approach is visibly misaligned, abort immediately and verify physical X registration before recalibrating the rack,
+- if the controller reports the expected X but the spindle is physically displaced, inspect the X coupler/drivetrain before changing software coordinates,
+- periodically inspect the X coupler witness marks and clamp tightness.
+
+
+## 12. Repair verification — 2026-10-03
+
+- Reconnected a pulled motor signal wire into the green spring-terminal connector.
+- Reinstalled the X motor and fully seated/tightened the coupler on the motor shaft.
+- Re-homed the machine and reran the complete ATC initialization.
+- Confirmed the ATC tool changer aligned and operated correctly.
+- Reran the spoilboard fastener-hole job.
+- Verified the counterbore pockets and through-holes were concentric/aligned.
+- Measured pocket locations and found them correct.
+- No repeat X drift or ATC rack miss was observed.
+- Treat the X motor coupler as the resolved root cause unless the failure recurs.
